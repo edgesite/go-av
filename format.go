@@ -149,6 +149,10 @@ type formatContext struct {
 	pinnedDataOnce sync.Once
 }
 
+func (c *formatContext) GetFormatContext() *avformat.Context {
+	return c._formatContext
+}
+
 func (ctx *formatContext) pinnedData() *pinnedFormatContextData {
 	ctx.pinnedDataOnce.Do(func() {
 		ctx.Opaque = unsafe.Pointer(cgo.NewHandle(&pinnedFormatContextData{}))

@@ -103,6 +103,10 @@ func OpenInputWithOpener(opener Opener, url string) (*InputFormatContext, error)
 	return ret, nil
 }
 
+func (c *InputFormatContext) GetFormatContext() *avformat.Context {
+	return c.formatContext._formatContext
+}
+
 func (ctx *InputFormatContext) ReadPacketReuse(packet *Packet) error {
 	return ctx.realError(averror(avformat.ReadFrame(ctx._formatContext, packet.prepare())))
 }

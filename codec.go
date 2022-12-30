@@ -172,6 +172,10 @@ type CodecParameters struct {
 	*_codecParameters
 }
 
+func (p *CodecParameters) Inner() *_codecParameters {
+	return p._codecParameters
+}
+
 type pinnedCodecContextData struct {
 	err error
 
